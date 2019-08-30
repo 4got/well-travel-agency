@@ -24,6 +24,7 @@
 	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'well-travel-agency' ); ?></a>
 
 	<header id="masthead" class="site-header">
+		
 		<div class="site-branding">
 			<?php
 			the_custom_logo();
@@ -39,7 +40,7 @@
 			$well_travel_agency_description = get_bloginfo( 'description', 'display' );
 			if ( $well_travel_agency_description || is_customize_preview() ) :
 				?>
-				<p class="site-description"><?php echo $well_travel_agency_description; /* WPCS: xss ok. */ ?></p>
+				<p class="site-description"><?php echo $well_travel_agency_description; ?></p>
 			<?php endif; ?>
 		</div><!-- .site-branding -->
 
@@ -52,7 +53,7 @@
 			) );
 			?>
 		</nav><!-- #site-navigation -->
-		
+
 	</header><!-- #masthead -->
 
 	<div id="content" class="site-content">
