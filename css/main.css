@@ -1,7 +1,18 @@
-a {
-  text-decoration: none;
+:root {
+  --color-main: #06b;
+  --color-second: #ef4123;
+  --color-second-alt: #fff200;
+  --color-alt: #0af;
+  --color-alt-5: #00aaff50;
+  --color-bg: #e3f6ff;
+  --color-bg-dark: #cfefff;
+  --color-text: #035;
 }
 
 /* header */
-#masthead {
+
+/* advantages */
+.advantages-icon {
+  margin: 20px;
+  max-width: 100%;
 }

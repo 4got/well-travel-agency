@@ -1,8 +1,8 @@
 /*!
 Theme Name: Well Travel Agency
-Version: 0.0.3
+Version: 0.0.4
 GitHub Theme URI: https://github.com/4got/well-travel-agency
 */
 @import 'css/underscores.css';
-@import 'css/grid.css';
+@import 'css/layout.css';
 @import 'css/main.css';

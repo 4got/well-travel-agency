@@ -32,12 +32,24 @@ class wta_admin {
     
     $field = isset($args['field']) ? $args['field'] : 'input';
     $section = isset($args['section']) ? $args['section'] : '';
+    $label = isset($args['label']) ? $args['label'] : null;
     switch ($field) {
       case 'input':
         add_settings_field(
           $args['id'],
-          $args['label'],
+          $label,
           [__CLASS__, 'draw_input'],
+          $args['page'],
+          $section,
+          ['name' => $args['id']]
+        );
+        break;
+
+      case 'hidden':
+        add_settings_field(
+          $args['id'],
+          $label,
+          [__CLASS__, 'draw_hidden'],
           $args['page'],
           $section,
           ['name' => $args['id']]
@@ -47,7 +59,7 @@ class wta_admin {
       default:
         add_settings_field(
           $args['id'],
-          $args['label'],
+          $label,
           [__CLASS__, 'draw_input'],
           $args['page'],
           $section,
@@ -68,6 +80,21 @@ class wta_admin {
       id="wta-<?= $name ?>" 
       value="<?= esc_attr( get_option($name) ) ?>" 
     /> 
+    <?php
+  }
+
+  static function draw_hidden( $val ){
+    $name = $val['name'];
+    ?>
+    <input 
+      type="hidden" 
+      name="<?= $name ?>"
+      id="wta-<?= $name ?>" 
+      value="<?= esc_attr( get_option($name) ) ?>" 
+    />
+    <script>
+      jQuery('#wta-<?= $name ?>').closest('tr').hide();
+    </script>
     <?php
   }
 

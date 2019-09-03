@@ -11,6 +11,10 @@ get_header();
 
 get_tour_search();
 
+get_template_part( 'template-parts/common/whywe' );
+
 get_spo_tours();
+
+get_vk();
 
 get_footer();

@@ -8,7 +8,7 @@
  */
 
 require get_template_directory() . '/inc/uderscores.php';
-require get_template_directory() . '/class/wta_admin.php';
+require get_template_directory() . '/php/wta_admin.php';
 
 
 # adminpanel
@@ -37,7 +37,6 @@ function add_wta_menu(){
 	);
 }
 
-
 function page_init(){
 	wta_admin::draw_page([
 		'id' => 'wta_agency',
@@ -55,8 +54,9 @@ function page_init(){
 						'label' => 'Название агентства (Отображается в шапке сайта)',
 					],
 					[
-						'id' => 'agency_name',
-						'label' => 'Название агентства (Отображается в шапке сайта)',
+						'id' => 'wta_site_initiated',
+						// 'label' => 'Сайт был инициирован',
+						'field' => 'hidden'
 					],
 				],
 			],
@@ -65,10 +65,20 @@ function page_init(){
 }
 
 
+# site init
 
 
+add_action('wp_ajax_wta_site_init', 'wta_site_init');
 
+function wta_site_init() {
+	// install plugins
+	// create pages
 
+	if (update_option( 'wta_site_initiated', 1 )) echo 1;
+	else echo 0;
+
+	wp_die();
+}
 
 
 
@@ -125,4 +135,8 @@ function get_spo_tours() {
 
 function get_my_tours() {
   echo 'my_tours';
+}
+
+function get_vk() {
+  echo 'my_vk';
 }

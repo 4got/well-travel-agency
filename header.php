@@ -24,17 +24,23 @@
 	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'well-travel-agency' ); ?></a>
 
 	<header id="masthead" class="site-header">
+
+		<div class="wta-container">
+			<div class="wta-row">
+				
+			</div>
+		</div>
 		
 		<div class="site-branding">
 			<?php
 			the_custom_logo();
 			if ( is_front_page() && is_home() ) :
 				?>
-				<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
+				<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?= get_option('agency_name') ?></a></h1>
 				<?php
 			else :
 				?>
-				<p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
+				<p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?= get_option('agency_name') ?></a></p>
 				<?php
 			endif;
 			$well_travel_agency_description = get_bloginfo( 'description', 'display' );
