@@ -9,12 +9,14 @@
 
 get_header();
 
-get_tour_search();
+dynamic_sidebar( 'home' );
 
-get_template_part( 'template-parts/common/whywe' );
+// get_tour_search();
 
-get_spo_tours();
+// get_template_part( 'template-parts/common/whywe' );
 
-get_vk();
+// get_spo_tours();
+
+// get_vk();
 
 get_footer();

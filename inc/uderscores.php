@@ -96,24 +96,24 @@ add_action( 'after_setup_theme', 'well_travel_agency_content_width', 0 );
  *
  * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
  */
-function well_travel_agency_widgets_init() {
-	register_sidebar( array(
-		'name'          => esc_html__( 'Sidebar', 'well-travel-agency' ),
-		'id'            => 'sidebar-1',
-		'description'   => esc_html__( 'Add widgets here.', 'well-travel-agency' ),
-		'before_widget' => '<section id="%1$s" class="widget %2$s">',
-		'after_widget'  => '</section>',
-		'before_title'  => '<h2 class="widget-title">',
-		'after_title'   => '</h2>',
-	) );
-}
-add_action( 'widgets_init', 'well_travel_agency_widgets_init' );
+// function well_travel_agency_widgets_init() {
+// 	register_sidebar( array(
+// 		'name'          => esc_html__( 'Sidebar', 'well-travel-agency' ),
+// 		'id'            => 'sidebar-1',
+// 		'description'   => esc_html__( 'Add widgets here.', 'well-travel-agency' ),
+// 		'before_widget' => '<section id="%1$s" class="widget %2$s">',
+// 		'after_widget'  => '</section>',
+// 		'before_title'  => '<h2 class="widget-title">',
+// 		'after_title'   => '</h2>',
+// 	) );
+// }
+// add_action( 'widgets_init', 'well_travel_agency_widgets_init' );
 
 /**
  * Enqueue scripts and styles.
  */
 function well_travel_agency_scripts() {
-	wp_enqueue_style( 'well-travel-agency-style', get_stylesheet_uri() );
+	wp_enqueue_style( 'well-travel-agency-style', get_stylesheet_uri() . '?' . time() );
 
 	wp_enqueue_script( 'well-travel-agency-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151215', true );
 

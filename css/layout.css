@@ -1,3 +1,9 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 [hidden] {
   display: none !important;
 }
@@ -63,6 +69,7 @@ a {
   padding: 30px 0;
 }
 .wta-container {
+  width: 100%;
   max-width: 1200px;
   padding-right: 15px;
   padding-left: 15px;
@@ -84,11 +91,19 @@ a {
   flex: 0 0 25%;
   max-width: 25%;
 }
+.wta-col-6 {
+  flex: 0 0 50%;
+  max-width: 50%;
+}
 
 @media (max-width: 992px) {
   .wta-col-3 {
     flex: 0 0 50%;
     max-width: 50%;
+  }
+  .wta-col-6 {
+    flex: 0 0 100%;
+    max-width: 100%;
   }
 }
 
@@ -103,16 +118,60 @@ a {
   text-align: center;
 }
 
-.wta-button-main {
-  width: 100%;
+button.wta-button-main,
+button.wta-button-second,
+button.wta-button-third {
   background: var(--color-button);
   outline: none;
-  padding: 14px 20px;
+  padding: 11px 14px;
+  border: none;
   border-bottom: 2px solid var(--color-alt);
-  font-family: Open Sans;
-  font-size: 16px;
+  font-family: 'Open Sans';
+  font-size: 14px;
   font-weight: 600;
   color: #fff;
   cursor: pointer;
   border-radius: 4px;
+  margin-top: 8px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+button.wta-button-second {
+  background: var(--color-bg-dark);
+  border-bottom-color: var(--color-alt-5);
+  color: var(--color-main);
+}
+button.wta-button-third {
+  background: #fff;
+  color: var(--color-main);
+  padding: 6px 13px;
+  border: 1px solid var(--color-alt-5);
+  border-bottom: 2px solid var(--color-alt-5);
+  width: unset;
+  display: inline-flex;
+}
+button.wta-button-main:hover {
+  background: var(--color-button-hover);
+  border-bottom: 2px solid var(--color-second-alt);
+}
+button.wta-button-second:hover {
+  background: var(--color-bg);
+  border-bottom-color: var(--color-bg-dark);
+  color: var(--color-alt);
+}
+button.wta-button-large {
+  padding: 14px 20px;
+  font-size: 16px;
+}
+
+.wta-icon:before {
+  content: '\f072';
+  font-family: 'Font Awesome 5 Pro';
+  font-weight: 900;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  color: var(--color-alt-5);
+  transition: 0.3s ease-out;
 }
