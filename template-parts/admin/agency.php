@@ -35,9 +35,8 @@ function is_active_tab($name) {
       <a class="button action button-primary" onclick="wtaSiteInit()">Выполнить первоначальную настройку</a>
       <p>Внимание! это действие удалит всю информацию с сайта</p>
       <script>
-        const wtaSiteInit = () => {
-          const e = window.event;
-          // e.target.(html)
+        const wtaSiteInit = e => {
+          e = e || window.event;
           e.target.classList.add('updating-message');
           jQuery.post('<?= admin_url('admin-ajax.php') ?>', {
             action: 'wta_site_init',

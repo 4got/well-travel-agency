@@ -62,10 +62,9 @@
 			<nav id="site-navigation" class="main-navigation wta-container">
 				<button class="menu-toggle wta-button-main" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e('Меню', 'well-travel-agency'); ?></button>
 				<?php
-				wp_nav_menu(array(
-					'theme_location' => 'menu-1',
-					'menu_id'        => 'primary-menu',
-				));
+				wp_nav_menu([
+					'menu_id'        => 'header-menu',
+				]);
 				?>
 			</nav><!-- #site-navigation -->
 

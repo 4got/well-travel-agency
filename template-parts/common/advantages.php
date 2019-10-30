@@ -1,6 +1,6 @@
 <section class="wta-section">
   <div class="wta-container">
-    <h2 class="is-centered is-leader">Почему туристы выбирают нашу турфирму?</h2>
+    <h2 class="is-centered is-leader">Наши преимущества</h2>
     <div class="wta-row">
       <div class="wta-col-3">
         <img src="http://pro.well.ru/wp-content/themes/wellpro/images/icon-5.svg" alt="" class="advantages-icon">

@@ -39,17 +39,17 @@ h2,
 
 h3,
 .h3 {
-  font-size: 1.75rem;
+  font-size: 1.5rem;
 }
 
 h4,
 .h4 {
-  font-size: 1.5rem;
+  font-size: 1.35rem;
 }
 
 h5,
 .h5 {
-  font-size: 1.25rem;
+  font-size: 1.15rem;
 }
 
 h6,
@@ -57,8 +57,10 @@ h6,
   font-size: 1rem;
 }
 
-a {
+a,
+a:visited {
   text-decoration: none;
+  color: var(--color-main);
 }
 
 .wta-section {
@@ -118,6 +120,14 @@ a {
   text-align: center;
 }
 
+.m-vertical {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+a.wta-button-main,
+a.wta-button-second,
+a.wta-button-third,
 button.wta-button-main,
 button.wta-button-second,
 button.wta-button-third {
@@ -129,7 +139,7 @@ button.wta-button-third {
   font-family: 'Open Sans';
   font-size: 14px;
   font-weight: 600;
-  color: #fff;
+  color: var(--color-paper);
   cursor: pointer;
   border-radius: 4px;
   margin-top: 8px;
@@ -138,13 +148,15 @@ button.wta-button-third {
   align-items: center;
   justify-content: center;
 }
+a.wta-button-second,
 button.wta-button-second {
   background: var(--color-bg-dark);
   border-bottom-color: var(--color-alt-5);
   color: var(--color-main);
 }
+a.wta-button-third,
 button.wta-button-third {
-  background: #fff;
+  background: var(--color-paper);
   color: var(--color-main);
   padding: 6px 13px;
   border: 1px solid var(--color-alt-5);
@@ -152,15 +164,18 @@ button.wta-button-third {
   width: unset;
   display: inline-flex;
 }
+a.wta-button-main:hover,
 button.wta-button-main:hover {
   background: var(--color-button-hover);
   border-bottom: 2px solid var(--color-second-alt);
 }
+a.wta-button-second:hover,
 button.wta-button-second:hover {
   background: var(--color-bg);
   border-bottom-color: var(--color-bg-dark);
   color: var(--color-alt);
 }
+a.wta-button-large,
 button.wta-button-large {
   padding: 14px 20px;
   font-size: 16px;

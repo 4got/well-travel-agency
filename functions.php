@@ -84,8 +84,8 @@ function page_init() {
 				'label' => 'Второстепенные',
 				'fields' => [
 					[
-						'id' => 'agency_description',
-						'label' => 'Описание агентства',
+						'id' => 'agency_vk_group',
+						'label' => 'ID сообщества ВКонтакте',
 					],
 				],
 			],
@@ -103,8 +103,8 @@ function page_init() {
 
 add_action('wp_ajax_wta_site_init', 'wta_site_init');
 function wta_site_init() {
+
 	# create pages
-	
 	foreach (get_pages() as $key => $post) {
 		wp_delete_post($post->ID);
 		echo '<p>Удалена страница "' . $post->post_title . '"</p>';
@@ -139,6 +139,21 @@ function wta_site_init() {
 	echo '</div>';
 	update_option('wta_site_map', serialize($wta_site_map));
 
+	# header menu
+	$wta_header_menu   = 'header-menu';
+	if (wp_get_nav_menu_object($wta_header_menu)) wp_delete_nav_menu($wta_header_menu);
+	$menu_id = wp_create_nav_menu($wta_header_menu);
+	foreach ($wta_site_map as $key => $id) {
+		if ($key === 'home') continue;
+		wp_update_nav_menu_item( $menu_id, 0, array(
+			'menu-item-title'   => $wta_initial_pages[$key],
+			'menu-item-classes' => $key,
+			'menu-item-url'     => home_url( '/?page_id=' . $id ), 
+			'menu-item-status'  => 'publish'
+		));
+	}
+	if ($menu_id) echo '<p>Добавление страниц в меню</p>';
+
 	# homepage
 	update_option('page_on_front', $wta_site_map['home']);
 	update_option('show_on_front', 'page');
@@ -155,10 +170,12 @@ function wta_site_init() {
 		'https://github.com/wp-premium/advanced-custom-fields-pro/archive/master.zip'
 	);
 
-	# insert widgets
+	# reinsert blocks in homepage
+	remove_widgets_in_sidebar('home');
 	insert_widget_in_sidebar('wta_tour_search', '', 'home');
-	insert_widget_in_sidebar('wta_whywe', '', 'home');
 	insert_widget_in_sidebar('wta_advantages', '', 'home');
+	insert_widget_in_sidebar('wta_vk', '', 'home');
+	insert_widget_in_sidebar('wta_whywe', '', 'home');
 	echo '<p>Добавление виджетов на главную страницу</p>';
 
 	echo '<p>Готово!</p>';
@@ -188,6 +205,7 @@ function register_wta_widgets() {
 	register_widget( 'wta_tour_search' );
 	register_widget( 'wta_whywe' );
 	register_widget( 'wta_advantages' );
+	register_widget( 'wta_vk' );
 
 	$deprecated_widgets = [
 		'WP_Widget_Calendar',         // Календарь
@@ -205,8 +223,8 @@ function register_wta_widgets() {
 
 
 
-#plugins
-
+# plugins
+# disable update
 add_filter( 'site_transient_update_plugins', 'filter_plugin_updates' );
 function filter_plugin_updates( $value ) {
 	unset( $value->response['advanced-custom-fields-pro-master/acf.php'] );
